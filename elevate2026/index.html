@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="DigiBC at Web Summit Vancouver 2026 — Creative Tech presence May 11–14. Centre Stage, Film Summit, Gaming Summit, BC Pavilion, Creative Tech Startup Island, Venture Spotlight Studios, Tech Advantage Tours and the DigiBC Mixer." />
+<title>DigiBC at Web Summit Vancouver 2026</title>
+
+<!-- Fonts: DigiBC brand kit, self-hosted from ./assets/fonts/.
+     Display: Veneer (Yellow Design Studio, 3 stackable cuts).
+     Body:    Merriweather (Sorkin Type, OFL, 8 weights + italics).
+     No external CDN dependency — the page renders fully offline. -->
+
+<style>
+  /* ========================================================================
+     Veneer — DigiBC display face. Yellow Design Studio ships three "cuts"
+     designed to be layered together (stacked) for a full letterpress effect,
+     but each cut also works solo. We map the three cuts to weight slots so
+     CSS like `font-weight: 700` automatically picks the right impression:
+
+         400  Veneer        — lightest impression, most chipped/distressed
+         700  VeneerTwo     — medium impression (the de-facto "main" cut)
+         900  VeneerThree   — heaviest impression, fewest gaps
+
+     VeneerExtras is a separate dingbat/ornament family kept under its own
+     name so it isn't picked up accidentally by weight rounding.
+     ======================================================================== */
+  @font-face { font-family: 'Veneer';
+    src: url('./assets/fonts/Veneer.woff2') format('woff2');
+    font-weight: 400; font-style: normal;  font-display: swap; }
+  @font-face { font-family: 'Veneer';
+    src: url('./assets/fonts/VeneerItalic.woff2') format('woff2');
+    font-weight: 400; font-style: italic;  font-display: swap; }
+  @font-face { font-family: 'Veneer';
+    src: url('./assets/fonts/VeneerTwo.woff2') format('woff2');
+    font-weight: 700; font-style: normal;  font-display: swap; }
+  @font-face { font-family: 'Veneer';
+    src: url('./assets/fonts/VeneerTwoItalic.woff2') format('woff2');
+    font-weight: 700; font-style: italic;  font-display: swap; }
+  @font-face { font-family: 'Veneer';
+    src: url('./assets/fonts/VeneerThree.woff2') format('woff2');
+    font-weight: 900; font-style: normal;  font-display: swap; }
+  @font-face { font-family: 'Veneer';
+    src: url('./assets/fonts/VeneerThreeItalic.woff2') format('woff2');
+    font-weight: 900; font-style: italic;  font-display: swap; }
+  @font-face { font-family: 'VeneerExtras';
+    src: url('./assets/fonts/VeneerExtras.woff2') format('woff2');
+    font-weight: 400; font-style: normal;  font-display: swap; }
+  @font-face { font-family: 'VeneerExtras';
+    src: url('./assets/fonts/VeneerExtrasItalic.woff2') format('woff2');
+    font-weight: 400; font-style: italic;  font-display: swap; }
+
+  /* ========================================================================
+     Merriweather — DigiBC body face. Self-hosted from the open Sorkin Type
+     release. 4 weights (300/400/700/900) × 2 styles.
+     ======================================================================== */
+  @font-face { font-family: 'Merriweather';
+    src: url('./assets/fonts/Merriweather-Light.woff2') format('woff2');
+    font-weight: 300; font-style: normal;  font-display: swap; }
+  @font-face { font-family: 'Merriweather';
+    src: url('./assets/fonts/Merriweather-LightItalic.woff2') format('woff2');
+    font-weight: 300; font-style: italic;  font-display: swap; }
+  @font-face { font-family: 'Merriweather';
+    src: url('./assets/fonts/Merriweather-Regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal;  font-display: swap; }
+  @font-face { font-family: 'Merriweather';
+    src: url('./assets/fonts/Merriweather-Italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic;  font-display: swap; }
+  @font-face { font-family: 'Merriweather';
+    src: url('./assets/fonts/Merriweather-Bold.woff2') format('woff2');
+    font-weight: 700; font-style: normal;  font-display: swap; }
+  @font-face { font-family: 'Merriweather';
+    src: url('./assets/fonts/Merriweather-BoldItalic.woff2') format('woff2');
+    font-weight: 700; font-style: italic;  font-display: swap; }
+  @font-face { font-family: 'Merriweather';
+    src: url('./assets/fonts/Merriweather-Black.woff2') format('woff2');
+    font-weight: 900; font-style: normal;  font-display: swap; }
+  @font-face { font-family: 'Merriweather';
+    src: url('./assets/fonts/Merriweather-BlackItalic.woff2') format('woff2');
+    font-weight: 900; font-style: italic;  font-display: swap; }
+  /* ========================================================================
+     DigiBC brand tokens — derived from the DigiBC Elevate deck and
+     DigiBC.org visual system: black/navy + bright cyan-blue logo accent,
+     with pink (Gaming), green (Film) and dark navy (Centre Stage) tags.
+     ======================================================================== */
+  :root {
+    --digi-black:        #0B0F14;
+    --digi-ink:          #0E2A47;        /* deep navy for headlines */
+    --digi-ink-2:        #1B3A57;        /* Centre Stage tag bg */
+    --digi-blue:         #5BC2E7;        /* DigiBC light/cyan blue */
+    --digi-blue-2:       #2EA8D6;        /* hover/darker blue */
+    --digi-pink:         #FF6FA9;        /* Gaming Summit + Spotlight accent */
+    --digi-pink-2:       #FF3D87;
+    --digi-green:        #34D399;        /* Film Summit accent */
+    --digi-green-2:      #10B981;
+    --digi-gray-900:     #111827;
+    --digi-gray-700:     #374151;
+    --digi-gray-500:     #6B7280;
+    --digi-gray-300:     #D1D5DB;
+    --digi-gray-100:     #F3F4F6;
+    --digi-gray-50:      #FAFAFA;
+    --digi-bg:           #FFFFFF;
+
+    /* Type system — DigiBC brand kit, self-hosted (no CDN dependency):
+         Veneer (Yellow Design Studio licensed display),
+         Merriweather (Sorkin Type OFL serif body). */
+    --font-display:   'Veneer', Impact, 'Oswald', sans-serif;
+    --font-condensed: 'Veneer', Impact, 'Oswald', sans-serif;
+    --font-body:      'Merriweather', Georgia, 'Times New Roman', serif;
+
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+
+    --shadow-sm: 0 1px 2px rgba(11,15,20,.06);
+    --shadow-md: 0 4px 16px rgba(11,15,20,.08);
+    --shadow-lg: 0 12px 32px rgba(11,15,20,.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--digi-gray-900);
+    background: var(--digi-bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--digi-blue-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== Top nav ===== */
+  .topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid var(--digi-gray-100);
+  }
+  .topnav-row {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px; gap: 24px;
+  }
+  .topnav a.nav-link {
+    color: var(--digi-gray-700);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 0;
+  }
+  .topnav a.nav-link:hover { color: var(--digi-ink); }
+  .topnav .nav-links { display: flex; gap: 24px; align-items: center; }
+  @media (max-width: 800px) {
+    /* On narrow screens collapse all nav links except the last (Connect) so the
+       primary CTA stays reachable from the header. */
+    .topnav .nav-links a:not(:last-child) { display: none; }
+  }
+
+  /* ===== DigiBC logo (inline SVG) ===== */
+  .digibc-logo { display: flex; align-items: center; gap: 0; }
+  .digibc-logo svg { height: 30px; width: auto; }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    padding: 88px 0 72px;
+    background:
+      radial-gradient(900px 500px at 90% -10%, rgba(91,194,231,.18), transparent 60%),
+      radial-gradient(700px 400px at -10% 110%, rgba(255,111,169,.14), transparent 60%),
+      #fff;
+    overflow: hidden;
+  }
+  .hero-bar {
+    height: 6px; width: 96px; background: var(--digi-pink);
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--digi-green-2);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(56px, 9vw, 124px);
+    line-height: .92;
+    letter-spacing: .005em;
+    color: var(--digi-black);
+    margin: 14px 0 18px;
+    text-transform: uppercase;
+  }
+  .hero h1 .accent { color: var(--digi-blue); }
+  .hero p.lede {
+    font-size: clamp(17px, 1.6vw, 21px);
+    color: var(--digi-gray-700);
+    max-width: 680px;
+    margin: 0 0 36px;
+  }
+  .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); text-decoration: none; }
+  .btn-primary { background: var(--digi-ink); color: #fff; }
+  .btn-primary:hover { background: var(--digi-blue-2); }
+  .btn-secondary { background: transparent; color: var(--digi-ink); border-color: var(--digi-ink); }
+  .btn-secondary:hover { background: var(--digi-ink); color: #fff; }
+  .btn-pink { background: var(--digi-pink); color: #fff; }
+  .btn-pink:hover { background: var(--digi-pink-2); }
+
+  .hero-meta {
+    margin-top: 48px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--digi-gray-100);
+    padding-top: 28px;
+  }
+  .hero-meta .stat .num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--digi-ink);
+  }
+  .hero-meta .stat .label {
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--digi-gray-500);
+    margin-top: 6px;
+    font-weight: 600;
+  }
+  @media (max-width: 760px) {
+    .hero-meta { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== Section base ===== */
+  section.s { padding: 88px 0; border-top: 1px solid var(--digi-gray-100); }
+  section.s.alt { background: var(--digi-gray-50); }
+  section.s.dark { background: var(--digi-black); color: #E5E7EB; border-top-color: #1F2937; }
+  section.s.dark .section-title h2 { color: #fff; }
+  section.s.dark .section-title p { color: #9CA3AF; }
+
+  .section-head {
+    display: flex; flex-direction: column; align-items: flex-start;
+    margin-bottom: 48px; max-width: 880px;
+  }
+  .section-eyebrow {
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--digi-blue-2);
+    margin-bottom: 14px;
+  }
+  .section-eyebrow.green { color: var(--digi-green-2); }
+  .section-eyebrow.pink { color: var(--digi-pink-2); }
+  .section-eyebrow.navy { color: var(--digi-ink-2); }
+  .section-title h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(40px, 5.4vw, 72px);
+    line-height: .98;
+    margin: 0 0 12px;
+    letter-spacing: .005em;
+    color: var(--digi-black);
+    text-transform: uppercase;
+  }
+  .section-title .rule {
+    width: 80px; height: 4px; background: var(--digi-pink); margin: 14px 0 18px;
+  }
+  .section-title .rule.blue { background: var(--digi-blue); }
+  .section-title .rule.green { background: var(--digi-green); }
+  .section-title .rule.navy { background: var(--digi-ink-2); }
+  .section-title p.kicker {
+    color: var(--digi-gray-700);
+    font-size: 18px;
+    margin: 0;
+    max-width: 720px;
+  }
+
+  /* ===== Tag pills (matching the deck's category chips) ===== */
+  .tag {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 4px;
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .tag.centre  { background: var(--digi-ink-2); }
+  .tag.film    { background: var(--digi-green-2); }
+  .tag.gaming  { background: var(--digi-pink-2); }
+  .tag.pavilion { background: var(--digi-blue-2); }
+  .tag.tour    { background: var(--digi-ink); }
+
+  /* ===== Quick schedule overview ===== */
+  .day-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  }
+  @media (max-width: 980px) { .day-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .day-grid { grid-template-columns: 1fr; } }
+  .day-card {
+    background: #fff;
+    border: 1px solid var(--digi-gray-100);
+    border-radius: var(--r-md);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+    border-top: 4px solid var(--digi-blue);
+  }
+  .day-card.d1 { border-top-color: var(--digi-blue); }
+  .day-card.d2 { border-top-color: var(--digi-ink-2); }
+  .day-card.d3 { border-top-color: var(--digi-green-2); }
+  .day-card.d4 { border-top-color: var(--digi-pink-2); }
+  .day-card .day-eyebrow {
+    font-family: var(--font-condensed); font-weight: 700;
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--digi-gray-500);
+  }
+  .day-card .day-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: var(--digi-black);
+    margin: 6px 0 14px;
+    line-height: 1;
+  }
+  .day-card ul { list-style: none; padding: 0; margin: 0; }
+  .day-card li {
+    font-size: 14px; color: var(--digi-gray-700);
+    padding: 6px 0;
+    border-top: 1px dashed var(--digi-gray-100);
+  }
+  .day-card li:first-child { border-top: 0; }
+  .day-card li strong { color: var(--digi-ink); font-weight: 600; }
+
+  /* ===== Session cards (matching deck Centre Stage / Film / Gaming layout) ===== */
+  .session-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
+  }
+  @media (max-width: 800px) { .session-grid { grid-template-columns: 1fr; } }
+  .session {
+    background: #fff;
+    border: 1px solid var(--digi-gray-100);
+    border-radius: var(--r-md);
+    padding: 24px 26px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .session:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .session::before {
+    content: ''; position: absolute; left: 0; top: 22px; bottom: 22px;
+    width: 4px; border-radius: 4px;
+    background: var(--digi-ink-2);
+  }
+  .session.film::before { background: var(--digi-green-2); }
+  .session.gaming::before { background: var(--digi-pink-2); }
+  .session-meta-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; margin-bottom: 14px; flex-wrap: wrap;
+  }
+  .session-time {
+    font-size: 13px; color: var(--digi-gray-700);
+    font-weight: 600;
+  }
+  .session h3 {
+    font-family: var(--font-condensed);
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    color: var(--digi-ink);
+  }
+  .session .speakers {
+    font-size: 14px; color: var(--digi-gray-700); margin: 0 0 12px;
+  }
+  .session .speakers .name { color: var(--digi-ink); font-weight: 600; }
+  .session .session-link {
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    font-weight: 700;
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--digi-blue-2);
+  }
+  .session .session-link:hover { color: var(--digi-pink-2); }
+  .session .session-link::after { content: '→'; }
+
+  /* ===== BC Pavilion timeline table ===== */
+  .pavilion-table {
+    width: 100%; border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--digi-gray-100);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .pavilion-table th, .pavilion-table td {
+    padding: 14px 18px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid var(--digi-gray-100);
+    font-size: 14px;
+  }
+  .pavilion-table thead th {
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--digi-gray-500);
+    background: var(--digi-gray-50);
+    border-top: 0;
+  }
+  .pavilion-table .time {
+    font-weight: 700;
+    color: var(--digi-ink-2);
+    white-space: nowrap;
+    width: 130px;
+  }
+  .pavilion-table .item-title {
+    font-weight: 600;
+    color: var(--digi-ink);
+    width: 32%;
+  }
+  .pavilion-table .item-title.networking,
+  .pavilion-table .item-title.lunch {
+    color: var(--digi-gray-500);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .pavilion-table .who { color: var(--digi-gray-700); }
+  @media (max-width: 720px) {
+    .pavilion-table thead { display: none; }
+    .pavilion-table, .pavilion-table tbody, .pavilion-table tr, .pavilion-table td {
+      display: block; width: 100%;
+    }
+    .pavilion-table tr { border-top: 1px solid var(--digi-gray-100); padding: 10px 0; }
+    .pavilion-table td { border-top: 0; padding: 4px 18px; }
+    .pavilion-table .time { width: auto; }
+    .pavilion-table .item-title { width: auto; }
+  }
+
+  /* ===== Studios grid ===== */
+  .studio-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  }
+  @media (max-width: 1000px) { .studio-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px)  { .studio-grid { grid-template-columns: repeat(2, 1fr); } }
+  .studio {
+    background: var(--digi-black);
+    color: #fff;
+    border-radius: var(--r-sm);
+    padding: 22px 18px 18px;
+    position: relative;
+    overflow: hidden;
+    min-height: 96px;
+    display: flex; align-items: flex-end;
+    transition: transform .15s ease;
+  }
+  .studio:hover { transform: translateY(-2px); }
+  .studio::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--digi-pink);
+  }
+  .studio:nth-child(4n+1)::before { background: var(--digi-pink); }
+  .studio:nth-child(4n+2)::before { background: var(--digi-green); }
+  .studio:nth-child(4n+3)::before { background: var(--digi-blue); }
+  .studio:nth-child(4n+4)::before { background: var(--digi-ink-2); }
+  .studio .name {
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.2;
+    color: #fff;
+  }
+
+  /* ===== Startup Island tracks ===== */
+  .tracks {
+    display: grid; grid-template-columns: 2fr 1fr; gap: 32px;
+    background: #fff;
+    border: 1px solid var(--digi-gray-100);
+    border-radius: var(--r-md);
+    padding: 32px;
+  }
+  @media (max-width: 760px) { .tracks { grid-template-columns: 1fr; } }
+  .track-head {
+    display: inline-block;
+    padding: 8px 16px;
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .track-head.alpha { background: var(--digi-green-2); }
+  .track-head.beta  { background: var(--digi-pink-2); }
+  .track-count { color: var(--digi-gray-500); font-weight: 500; margin-left: 10px; }
+  .track ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .track li {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(--digi-ink);
+    letter-spacing: .02em;
+  }
+  .track li::before {
+    content: ''; width: 14px; height: 14px; border-radius: 2px;
+    background: var(--digi-green);
+    flex: 0 0 14px;
+  }
+  .track.beta li::before { background: var(--digi-pink); }
+
+  /* ===== Tours / Mixer feature row ===== */
+  .feature-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  @media (max-width: 900px) { .feature-grid { grid-template-columns: 1fr; } }
+  .feature {
+    background: #fff;
+    border: 1px solid var(--digi-gray-100);
+    border-radius: var(--r-md);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .feature .icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--digi-blue);
+    color: #fff;
+    margin-bottom: 18px;
+    font-family: var(--font-condensed); font-weight: 800; font-size: 22px;
+  }
+  .feature.b .icon { background: var(--digi-pink-2); }
+  .feature.c .icon { background: var(--digi-green-2); }
+  .feature h3 {
+    font-family: var(--font-condensed);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 0 0 8px;
+    color: var(--digi-ink);
+    letter-spacing: .02em;
+  }
+  .feature .when {
+    font-size: 13px; color: var(--digi-gray-500);
+    font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .feature p { color: var(--digi-gray-700); font-size: 15px; margin: 0; }
+
+  /* ===== CTA banner ===== */
+  .cta-banner {
+    background:
+      radial-gradient(800px 300px at 100% 0%, rgba(91,194,231,.20), transparent 70%),
+      radial-gradient(700px 240px at 0% 100%, rgba(255,111,169,.14), transparent 70%),
+      var(--digi-black);
+    color: #fff;
+    border-radius: var(--r-lg);
+    padding: 64px 56px;
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 32px; align-items: center;
+  }
+  @media (max-width: 800px) {
+    .cta-banner { grid-template-columns: 1fr; padding: 40px 28px; }
+  }
+  .cta-banner h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1;
+    margin: 0 0 14px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .cta-banner h2 .accent { color: var(--digi-blue); }
+  .cta-banner p { color: #C7D2DC; font-size: 17px; margin: 0; max-width: 520px; }
+  .cta-banner .actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+  @media (max-width: 800px) { .cta-banner .actions { justify-content: flex-start; } }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--digi-black);
+    color: #C7D2DC;
+    padding: 64px 0 32px;
+  }
+  footer .foot-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 32px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 800px) {
+    footer .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+  footer h4 {
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: .22em;
+    color: #fff;
+    margin: 0 0 14px;
+  }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer li { margin-bottom: 8px; font-size: 14px; }
+  footer a { color: #C7D2DC; }
+  footer a:hover { color: var(--digi-blue); }
+  footer .meta {
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    border-top: 1px solid #1F2937; padding-top: 24px;
+    color: #6B7280; font-size: 12px;
+  }
+  footer .footer-logo svg { height: 32px; display: block; }
+  /* Footer logo reuses the #digibc-logo symbol; the DIGI path is set to
+     currentColor so we just set color:#fff on the link to invert it for
+     the dark footer. The BC path stays cyan in both contexts. */
+  footer .footer-tag {
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #9CA3AF;
+    margin-top: 6px;
+    font-size: 11px;
+  }
+
+  /* tiny utilities */
+  .nowrap { white-space: nowrap; }
+  .mt-0 { margin-top: 0; }
+</style>
+</head>
+<body>
+
+<!-- ========================================================================
+     Reusable inline DigiBC logo (SVG). Recreates the DIGIBC mark from the
+     deck. Source: assets/digibc-logo.svg (uploaded by DigiBC). The DIGI
+     glyph fill is set to currentColor so the same symbol can be reused in
+     the light nav (dark text) and the dark footer (white text); BC stays
+     cyan in both contexts. ======================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="digibc-logo" viewBox="0 0 284 51">
+      <path fill="currentColor" d="M30.9234 51H0.40336V0.109996H30.9234C45.7634 0.109996 56.5434 10.26 56.5434 25.03C56.5434 39.8 45.7634 51 30.9234 51ZM13.2834 38.05H30.9234C38.2034 38.05 43.5934 32.94 43.5934 25.66C43.5934 18.38 38.2034 12.99 30.9234 12.99H13.2834V38.05ZM75.8453 51H62.8953V0.109996H75.8453V51ZM139.593 51H107.883C93.1134 51 82.2634 39.8 82.2634 25.03C82.2634 10.05 93.1134 0.109996 107.883 0.109996H136.373V12.99H107.883C100.603 12.99 95.2134 18.38 95.2134 25.66C95.2134 32.94 100.463 38.05 107.883 38.05H126.643V30H106.623V20.27H139.593V51ZM159.791 51H146.841V0.109996H159.791V51Z"/>
+      <path fill="#65CEFC" d="M206.879 51H167.679V0.109996H205.339C215.909 0.109996 223.049 4.59 223.049 13.48C223.049 19.36 220.319 22.23 218.359 23.63C221.439 25.38 224.169 29.3 224.169 34.06C224.169 44.91 216.959 51 206.879 51ZM206.599 30H186.789V20.27H205.689C208.559 20.27 209.889 18.8 209.889 16.63C209.889 14.46 208.559 12.92 205.689 12.92H180.559V38.05H206.599C209.469 38.05 210.869 36.44 210.869 33.99C210.869 31.54 209.469 30 206.599 30ZM283.209 51H254.719C239.949 51 229.099 39.8 229.099 25.03C229.099 10.05 239.949 0.109996 254.719 0.109996H283.209V12.99H254.719C247.439 12.99 242.049 18.38 242.049 25.66C242.049 32.94 247.299 38.05 254.719 38.05H283.209V51Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== TOP NAV ===== -->
+<header class="topnav">
+  <div class="container topnav-row">
+    <a href="#top" class="digibc-logo" aria-label="DigiBC home" style="color: #091922;">
+      <svg viewBox="0 0 284 51" style="height: 28px; width: auto; display: block;" aria-hidden="true"><use href="#digibc-logo"/></svg>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="nav-link" href="#schedule">Schedule</a>
+      <a class="nav-link" href="#sessions">Sessions</a>
+      <a class="nav-link" href="#pavilion">BC Pavilion</a>
+      <a class="nav-link" href="#studios">Studios</a>
+      <a class="nav-link" href="#startup-island">Startup Island</a>
+      <a class="nav-link" href="#connect">Connect</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<main id="top">
+<section class="hero">
+  <div class="container">
+    <div class="hero-bar"></div>
+    <div class="eyebrow">Web Summit Vancouver · May 11–14, 2026</div>
+    <h1>DigiBC at <br>Web Summit <span class="accent">2026</span></h1>
+    <p class="lede">
+      BC's creative technology sector takes the global stage —
+      across <strong>Centre Stage</strong>, <strong>Film Summit</strong>,
+      <strong>Gaming Summit</strong>, the <strong>BC Pavilion</strong>,
+      and the <strong>Creative Tech Startup Island</strong> presented by Creative BC and DigiBC.
+    </p>
+    <div class="hero-cta-row">
+      <a class="btn btn-primary" href="#schedule">Full schedule</a>
+      <a class="btn btn-secondary" href="#connect">Find DigiBC on-site</a>
+    </div>
+
+    <div class="hero-meta">
+      <div class="stat"><div class="num">13</div><div class="label">DigiBC sessions</div></div>
+      <div class="stat"><div class="num">12</div><div class="label">Venture spotlight studios</div></div>
+      <div class="stat"><div class="num">8</div><div class="label">Startup Island startups</div></div>
+      <div class="stat"><div class="num">600+</div><div class="label">Global investors</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AT-A-GLANCE SCHEDULE ===== -->
+<section class="s alt" id="schedule">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">DigiBC Schedule</span>
+      <div class="section-title">
+        <h2>Web Summit 2026 · At a glance</h2>
+        <div class="rule"></div>
+        <p class="kicker">
+          Four days of curated talks, investor activations, founder mentorship,
+          and BC studio showcases — across Vancouver's Convention Centre West,
+          Kabam HQ, the Centre for Digital Media, and Sony Pictures Imageworks.
+        </p>
+      </div>
+    </div>
+
+    <div class="day-grid">
+      <article class="day-card d1">
+        <div class="day-eyebrow">Mon · May 11</div>
+        <h3 class="day-title">Tech Advantage Tours + Mixer</h3>
+        <ul>
+          <li><strong>11:00 AM</strong> · Sony Imageworks tour</li>
+          <li><strong>12:00–2:30 PM</strong> · Centre for Digital Media</li>
+          <li><strong>3:00–5:30 PM</strong> · DigiBC Mixer @ Kabam <span style="color:var(--digi-pink-2);font-weight:600;">(by invite)</span></li>
+          <li><strong>6:00 PM</strong> · Web Summit Opening Night</li>
+        </ul>
+      </article>
+
+      <article class="day-card d2">
+        <div class="day-eyebrow">Tue · May 12</div>
+        <h3 class="day-title">BC Pavilion + Centre Stage</h3>
+        <ul>
+          <li><strong>9:00 AM–5:00 PM</strong> · BC Pavilion: Creative Tech & AI/Quantum</li>
+          <li><strong>11:00–11:20 AM</strong> · Centre Stage: Lessons from Vancouver</li>
+          <li><strong>All day</strong> · Creative Tech Startup Island opens</li>
+          <li><strong>9:00 AM</strong> · Indigenous Welcome + Minister opening</li>
+        </ul>
+      </article>
+
+      <article class="day-card d3">
+        <div class="day-eyebrow">Wed · May 13</div>
+        <h3 class="day-title">Film Summit · Stage 5</h3>
+        <ul>
+          <li><strong>2:00 PM</strong> · AI goes to Hollywood</li>
+          <li><strong>2:20 PM</strong> · Designing worlds: Dune → reality</li>
+          <li><strong>3:00 PM</strong> · Webcomics & global franchises</li>
+          <li><strong>3:20 PM</strong> · ILM: Building new worlds in VFX</li>
+          <li><strong>3:40 PM</strong> · KPop Demon Hunters (Sony Imageworks)</li>
+        </ul>
+      </article>
+
+      <article class="day-card d4">
+        <div class="day-eyebrow">Thu · May 14</div>
+        <h3 class="day-title">Gaming Summit · Stage 5</h3>
+        <ul>
+          <li><strong>10:00 AM</strong> · Centre Stage: It's in the game (engine)</li>
+          <li><strong>2:05 PM</strong> · How chess saved my life — Chess.com</li>
+          <li><strong>2:25 PM</strong> · Who builds the future of gaming?</li>
+          <li><strong>2:45 PM</strong> · When players become the platform — Roblox</li>
+          <li><strong>4:05 PM</strong> · Game Over, Continue? — BioWare, Phoenix Labs</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CENTRE STAGE ===== -->
+<section class="s" id="sessions">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow navy">Centre Stage · Convention Centre West</span>
+      <div class="section-title">
+        <h2>Centre Stage</h2>
+        <div class="rule navy"></div>
+        <p class="kicker">
+          DigiBC takes the main stage to spotlight Vancouver's creative tech ecosystem
+          alongside the world's biggest names in animation, sports tech, and interactive media.
+        </p>
+      </div>
+    </div>
+
+    <div class="session-grid">
+      <article class="session">
+        <div class="session-meta-row">
+          <span class="tag centre">Centre Stage</span>
+          <span class="session-time">Tue May 12 · 11:00–11:20 AM</span>
+        </div>
+        <h3>Building a world-class creative tech hub: Lessons from Vancouver</h3>
+        <p class="speakers">
+          <span class="name">Michelle Grady</span> (President, Sony Imageworks) ·
+          <span class="name">Nick Cannon</span> (SVP Production & Technology, Walt Disney Animation Studios) ·
+          <span class="name">Jennifer McCarron</span> (President, Blue Ant Studios)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/cd9be43c-3bab-4a88-baa7-bb6788966978/building-a-world-class-creative-tech-hub-lessons-from-vancouver/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session">
+        <div class="session-meta-row">
+          <span class="tag centre">Centre Stage</span>
+          <span class="session-time">Thu May 14 · 10:00–10:20 AM</span>
+        </div>
+        <h3>It's in the game (engine): Interactive sports' tech evolution</h3>
+        <p class="speakers">
+          <span class="name">Andrew Pojar</span> (VP, Head of Technology, EA Sports) ·
+          <span class="name">Nathan Downer</span> (Anchor, CTV Toronto — moderator)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/f80d3132-aa4e-4ab0-855c-b0afe31943a0/it-s-in-the-game-engine-interactive-sports-tech-evolution/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILM SUMMIT ===== -->
+<section class="s alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow green">Film Summit · Wed May 13 · Stage 5</span>
+      <div class="section-title">
+        <h2>Film Summit</h2>
+        <div class="rule green"></div>
+        <p class="kicker">
+          Animation, VFX, virtual production, and AI in storytelling — five back-to-back sessions
+          on Stage 5 featuring Sony Imageworks, ILM, Territory Studio, Warner Bros. Animation, and WEBTOON.
+        </p>
+      </div>
+    </div>
+
+    <div class="session-grid">
+      <article class="session film">
+        <div class="session-meta-row">
+          <span class="tag film">Film Summit</span>
+          <span class="session-time">Wed May 13 · 2:00–2:20 PM</span>
+        </div>
+        <h3>AI goes to Hollywood</h3>
+        <p class="speakers">
+          <span class="name">Cecilia Shen</span> (Co-founder & CEO, Utopai Studios) ·
+          <span class="name">Bruce Hamilton</span> (CEO & General Partner, Everybody) ·
+          <span class="name">Stewart Clarke</span> (moderator)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/8bfffa6e-c349-4fd3-b16b-ec70090d3c0d/ai-goes-to-hollywood/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session film">
+        <div class="session-meta-row">
+          <span class="tag film">Film Summit</span>
+          <span class="session-time">Wed May 13 · 2:20–2:40 PM</span>
+        </div>
+        <h3>Designing worlds: From Dune to the real world</h3>
+        <p class="speakers">
+          <span class="name">Marti Romances</span> (Co-founder & Creative Director, Territory Studio)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/fccb0b07-7ab4-4c25-bae2-5adfe7700f4d/designing-worlds-from-dune-to-the-real-world/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session film">
+        <div class="session-meta-row">
+          <span class="tag film">Film Summit</span>
+          <span class="session-time">Wed May 13 · 3:00–3:20 PM</span>
+        </div>
+        <h3>How webcomics are powering the next global franchises</h3>
+        <p class="speakers">
+          <span class="name">Sam Register</span> (President, Warner Bros. Animation) ·
+          <span class="name">Yongsoo Kim</span> (President, WEBTOON Entertainment)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/fbf7fa92-9098-4012-a0ec-4da3fd638053/how-webcomics-are-powering-the-next-global-franchises/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session film">
+        <div class="session-meta-row">
+          <span class="tag film">Film Summit</span>
+          <span class="session-time">Wed May 13 · 3:20–3:40 PM</span>
+        </div>
+        <h3>ILM: How visual effects builds new worlds</h3>
+        <p class="speakers">
+          <span class="name">Marko Chulev</span> (Visual Effects Supervisor, Industrial Light & Magic) ·
+          <span class="name">Rachel Reed</span> (Visual Effects Producer, ILM) ·
+          <span class="name">Stewart Clarke</span> (moderator)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/b28afbce-8097-466b-be50-c37c902e7b1f/ilm-how-visual-effects-builds-new-worlds/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session film">
+        <div class="session-meta-row">
+          <span class="tag film">Film Summit</span>
+          <span class="session-time">Wed May 13 · 3:40–4:00 PM</span>
+        </div>
+        <h3>KPop Demon Hunters: Crafting a global animated phenomenon</h3>
+        <p class="speakers">
+          <span class="name">Jacky Priddle</span> (Senior Producer, Sony Imageworks) ·
+          <span class="name">Andrea Matamoros</span> (Modeling Supervisor, Sony Imageworks) ·
+          <span class="name">Josh O'Kane</span> (Reporter, The Globe and Mail — moderator)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/b7427562-a395-4e28-ae76-a73570cf1bf6/kpop-demon-hunters-crafting-a-global-animated-phenomenon/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GAMING SUMMIT ===== -->
+<section class="s">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow pink">Gaming Summit · Thu May 14 · Stage 5</span>
+      <div class="section-title">
+        <h2>Gaming Summit</h2>
+        <div class="rule"></div>
+        <p class="kicker">
+          Game design, generative AI, platforms, and creators —
+          BioWare, Roblox, Chess.com, Phoenix Labs, Brace Yourself Games, and more.
+        </p>
+      </div>
+    </div>
+
+    <div class="session-grid">
+      <article class="session gaming">
+        <div class="session-meta-row">
+          <span class="tag gaming">Gaming Summit</span>
+          <span class="session-time">Thu May 14 · 2:05–2:25 PM</span>
+        </div>
+        <h3>How chess saved my life</h3>
+        <p class="speakers">
+          <span class="name">Danny Rensch</span> (Co-founder & Chief Chess Officer, Chess.com)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/76a5be3c-728b-4b09-9007-f0c45848d0f2/how-chess-saved-my-life/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session gaming">
+        <div class="session-meta-row">
+          <span class="tag gaming">Gaming Summit</span>
+          <span class="session-time">Thu May 14 · 2:25–2:45 PM</span>
+        </div>
+        <h3>Who builds the future of gaming?</h3>
+        <p class="speakers">
+          <span class="name">Rory McGuire</span> (Chief Creative Officer, Blackbird Interactive) ·
+          <span class="name">Kimberly Voll</span> (CEO, Brace Yourself Games) ·
+          <span class="name">David Ewalt</span> (Editor-in-Chief, Scientific American — moderator)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/67e76abd-917e-4fc6-a802-78c53d058896/who-builds-the-future-of-gaming/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session gaming">
+        <div class="session-meta-row">
+          <span class="tag gaming">Gaming Summit</span>
+          <span class="session-time">Thu May 14 · 2:45–3:05 PM</span>
+        </div>
+        <h3>When players become the platform</h3>
+        <p class="speakers">
+          <span class="name">Jerret West</span> (CMO, Roblox)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/f97949fa-e268-4e73-aff2-7c4649fc81ff/when-players-become-the-platform/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session gaming">
+        <div class="session-meta-row">
+          <span class="tag gaming">Gaming Summit</span>
+          <span class="session-time">Thu May 14 · 3:05–3:25 PM</span>
+        </div>
+        <h3>Playful intelligence: Reimagining generative behavior</h3>
+        <p class="speakers">
+          <span class="name">Brian Tanner</span> (Co-founder & CEO, Artificial Agency)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/dfc627c3-b212-43cd-9fb0-3ae2b467e7c3/playful-intelligence-reimagining-generative-behavior/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session gaming">
+        <div class="session-meta-row">
+          <span class="tag gaming">Gaming Summit</span>
+          <span class="session-time">Thu May 14 · 3:25–3:45 PM</span>
+        </div>
+        <h3>Creators vs platforms: Who owns the player relationship?</h3>
+        <p class="speakers">
+          <span class="name">Brendan Stock</span> (CEO & Co-founder, Chartis) ·
+          <span class="name">Michael "Birdo" Ha</span> (Creator)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/sessions/van26/ecf1e0c6-efb9-4403-a548-7b5dee6e28e4/creators-vs-platforms-who-owns-the-player-relationship/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+
+      <article class="session gaming">
+        <div class="session-meta-row">
+          <span class="tag gaming">Gaming Summit</span>
+          <span class="session-time">Thu May 14 · 4:05–4:30 PM</span>
+        </div>
+        <h3>Game Over, Continue? — Lessons from the ups and downs of building game studios</h3>
+        <p class="speakers">
+          <span class="name">Ray Muzyka</span> (Co-founder, BioWare) ·
+          <span class="name">Jeanne-Marie Owens</span> (Co-founder Critical Path; COO, Phoenix Labs) ·
+          <span class="name">Jesse Houston</span> (Co-founder Critical Path, Phoenix Labs) ·
+          <span class="name">Victor Lucas</span> (Founder, Electric Playground Network)
+        </p>
+        <a class="session-link"
+           href="https://vancouver.websummit.com/"
+           target="_blank" rel="noopener">View on Web Summit</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BC PAVILION ===== -->
+<section class="s alt" id="pavilion">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">BC Pavilion · Tue May 12 · 9 AM – 5 PM</span>
+      <div class="section-title">
+        <h2>BC Pavilion · Creative Tech &amp; AI/Quantum</h2>
+        <div class="rule blue"></div>
+        <p class="kicker">
+          A full day at the BC Pavilion: Indigenous welcome, ministerial opening,
+          investment & funding panels, the $10K Pitch powered by Innovate BC,
+          AI + Quantum sessions, and a closing reception.
+        </p>
+      </div>
+    </div>
+
+    <table class="pavilion-table" aria-label="BC Pavilion schedule for May 12">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Programming</th>
+          <th>Speakers / hosts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="time">9:00 – 9:05</td>
+          <td class="item-title">Indigenous Welcome</td>
+          <td class="who">Nation TBD</td>
+        </tr>
+        <tr>
+          <td class="time">9:05 – 9:15</td>
+          <td class="item-title">Minister Opening Remarks</td>
+          <td class="who">Minister Robertson</td>
+        </tr>
+        <tr>
+          <td class="time">9:15 – 9:30</td>
+          <td class="item-title">PacifiCan</td>
+          <td class="who">PacifiCan</td>
+        </tr>
+        <tr>
+          <td class="time">9:30 – 10:00</td>
+          <td class="item-title">Indigenous Sovereignty in Tech</td>
+          <td class="who">
+            Natiea Vinson (FNTC) · Loretta Todd (IM4 Lab) · Josh Nilson (Maskwa Investments)
+          </td>
+        </tr>
+        <tr>
+          <td class="time">10:00 – 10:15</td>
+          <td class="item-title networking">Networking</td>
+          <td class="who"></td>
+        </tr>
+        <tr>
+          <td class="time">10:15 – 10:45</td>
+          <td class="item-title">Creative Tech Investing: Pitching to Different Types of Money</td>
+          <td class="who">
+            Mod: Jeanne-Marie Owens (DigiBC, Critical Path Games) ·
+            Jesse Houston (Griffin Ventures) ·
+            Arneh Khatchatourians (Kabam/Netmarble) ·
+            Matt Bilbey (London Venture Partners)
+          </td>
+        </tr>
+        <tr>
+          <td class="time">10:45 – 11:00</td>
+          <td class="item-title networking">Networking</td>
+          <td class="who"></td>
+        </tr>
+        <tr>
+          <td class="time">11:00 – 11:30</td>
+          <td class="item-title">Public Funding's Critical Role in IP</td>
+          <td class="who">
+            Mod: Liz Shorten (CMPA) ·
+            Bob Wong (Creative BC) ·
+            Janine Steele (CMF) ·
+            Peter Cowan (Innovate BC)
+          </td>
+        </tr>
+        <tr>
+          <td class="time">11:30 – 12:00</td>
+          <td class="item-title lunch">Lunch · Doing Business in BC</td>
+          <td class="who">Invest, TIBC</td>
+        </tr>
+        <tr>
+          <td class="time">12:00 – 1:00</td>
+          <td class="item-title">The $10K Pitch: BC's Startup All-Stars</td>
+          <td class="who">Powered by Innovate BC</td>
+        </tr>
+        <tr>
+          <td class="time">1:00 – 2:30</td>
+          <td class="item-title">Panels: AI + Quantum</td>
+          <td class="who">AIinBC + QAI · three sessions with networking breaks</td>
+        </tr>
+        <tr>
+          <td class="time">3:00 – 3:30</td>
+          <td class="item-title">Panel: Invest Vancouver</td>
+          <td class="who">Invest Vancouver</td>
+        </tr>
+        <tr>
+          <td class="time">3:30 – 4:00</td>
+          <td class="item-title networking">Booth Reconfiguration</td>
+          <td class="who"></td>
+        </tr>
+        <tr>
+          <td class="time">4:00 – 5:00</td>
+          <td class="item-title">Reception + Networking</td>
+          <td class="who">All Pavilion guests</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== VENTURE SPOTLIGHT STUDIOS ===== -->
+<section class="s" id="studios">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow pink">BC Pavilion · May 12 · Venture Spotlight</span>
+      <div class="section-title">
+        <h2>Venture Spotlight Studios</h2>
+        <div class="rule"></div>
+        <p class="kicker">
+          Twelve BC creative tech studios featured at the BC Pavilion —
+          from indie game makers to immersive media and post-production.
+        </p>
+      </div>
+    </div>
+
+    <div class="studio-grid">
+      <div class="studio"><span class="name">Alien Pixels</span></div>
+      <div class="studio"><span class="name">Guide Stone Studios</span></div>
+      <div class="studio"><span class="name">BuffaloBuffalo</span></div>
+      <div class="studio"><span class="name">Cartesian Theatre Corp.</span></div>
+      <div class="studio"><span class="name">Ludic Lemur</span></div>
+      <div class="studio"><span class="name">Lost Cartridge Creations</span></div>
+      <div class="studio"><span class="name">Simply Sweet Games Inc.</span></div>
+      <div class="studio"><span class="name">Antigen Interactive</span></div>
+      <div class="studio"><span class="name">Moonspire Games</span></div>
+      <div class="studio"><span class="name">Fableware</span></div>
+      <div class="studio"><span class="name">Sonical.ly Inc.</span></div>
+      <div class="studio"><span class="name">Seenik Dome Immersion Ltd.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STARTUP ISLAND ===== -->
+<section class="s alt" id="startup-island">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow green">Tue–Thu May 12–14 · Startup Island</span>
+      <div class="section-title">
+        <h2>Creative Tech Startup Island</h2>
+        <div class="rule green"></div>
+        <p class="kicker">
+          Presented by Creative BC and DigiBC. Eight BC startups across two tracks —
+          curated for matchmaking with the 600+ global investors at Web Summit Vancouver.
+        </p>
+      </div>
+    </div>
+
+    <div class="tracks">
+      <div class="track">
+        <span class="track-head alpha">Alpha Track <span class="track-count">7 companies</span></span>
+        <ul>
+          <li>Moonspire Games</li>
+          <li>Sonical.ly</li>
+          <li>Lost Cartridge Creations</li>
+          <li>Fableware</li>
+          <li>Simply Sweet Games</li>
+          <li>Cartesian Theatre Corp.</li>
+          <li>Clip Through Interactive Ltd.</li>
+        </ul>
+      </div>
+      <div class="track beta">
+        <span class="track-head beta">Beta Track <span class="track-count">1 company</span></span>
+        <ul>
+          <li>Alien Pixels</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOURS + MIXER ===== -->
+<section class="s">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow navy">Mon May 11 · Pre-Summit</span>
+      <div class="section-title">
+        <h2>Tech Advantage Tours + DigiBC Mixer</h2>
+        <div class="rule navy"></div>
+        <p class="kicker">
+          Curated tours of Vancouver's creative tech anchors, hosted by Invest Vancouver,
+          and the by-invitation DigiBC Mixer connecting BC studios with global investors and Web Summit VIPs.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <article class="feature">
+        <div class="icon">①</div>
+        <div class="when">Mon May 11 · 11:00 AM</div>
+        <h3>Sony Pictures Imageworks</h3>
+        <p>
+          A behind-the-scenes look at the Vancouver studio behind
+          <em>KPop Demon Hunters</em>, <em>Spider-Verse</em>, and decades of feature animation and VFX.
+        </p>
+      </article>
+
+      <article class="feature b">
+        <div class="icon">②</div>
+        <div class="when">Mon May 11 · 12:00 – 2:30 PM</div>
+        <h3>Centre for Digital Media</h3>
+        <p>
+          Tour CDM's Great Northern Way campus —
+          home to BC's flagship digital media graduate program and a launchpad for founders, animators, and game developers.
+        </p>
+      </article>
+
+      <article class="feature c">
+        <div class="icon">③</div>
+        <div class="when">Mon May 11 · 3:00 – 5:30 PM</div>
+        <h3>DigiBC Mixer @ Kabam</h3>
+        <p>
+          By-invitation industry mixer with global investors and Web Summit VIPs,
+          hosted by Kabam ahead of the Web Summit opening night.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA / CONNECT ===== -->
+<section class="s alt" id="connect">
+  <div class="container">
+    <div class="cta-banner">
+      <div>
+        <h2>Find DigiBC at <span class="accent">Web Summit</span></h2>
+        <p>
+          Visit the BC Pavilion at the Vancouver Convention Centre West.
+          For investor introductions, partner meetings, or studio matchmaking through Elevate,
+          reach the DigiBC team directly.
+        </p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-pink" href="mailto:info@digibc.org?subject=Web%20Summit%202026%20—%20DigiBC%20introduction">Email DigiBC</a>
+        <a class="btn btn-secondary" style="color:#fff; border-color:#fff;" href="https://digibc.org/build/" target="_blank" rel="noopener">About Elevate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="footer-logo" aria-label="DigiBC home" style="display:inline-block; color:#fff;">
+          <svg viewBox="0 0 284 51" style="height: 32px; width: auto; display: block;" aria-hidden="true"><use href="#digibc-logo"/></svg>
+        </a>
+        <p class="footer-tag">The Creative Technology Association of British Columbia</p>
+      </div>
+
+      <div>
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="https://digibc.org/build/" target="_blank" rel="noopener">Elevate (Build)</a></li>
+          <li><a href="https://digibc.org/learn/" target="_blank" rel="noopener">Learn</a></li>
+          <li><a href="https://digibc.org/experience/" target="_blank" rel="noopener">Experience</a></li>
+          <li><a href="https://digibc.org/resources/" target="_blank" rel="noopener">Resources</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Web Summit 2026</h4>
+        <ul>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#pavilion">BC Pavilion</a></li>
+          <li><a href="#studios">Venture Spotlight</a></li>
+          <li><a href="#startup-island">Startup Island</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://digibc.org/" target="_blank" rel="noopener">digibc.org</a></li>
+          <li><a href="mailto:info@digibc.org">info@digibc.org</a></li>
+          <li><a href="https://www.instagram.com/follow_digibc/" target="_blank" rel="noopener">@follow_digibc</a></li>
+          <li><a href="https://vancouver.websummit.com/" target="_blank" rel="noopener">Web Summit Vancouver</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="meta">
+      <div>© 2026 DigiBC — The Interactive &amp; Digital Media Industry Association of BC.</div>
+      <div>Web Summit Vancouver · May 11–14, 2026</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
