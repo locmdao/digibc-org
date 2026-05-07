@@ -361,6 +361,7 @@
   /* ===== Session cards (matching deck Centre Stage / Film / Gaming layout) ===== */
   .session-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
+    align-items: start; /* don't stretch short text cards next to taller image cards */
   }
   @media (max-width: 800px) { .session-grid { grid-template-columns: 1fr; } }
   .session {
@@ -408,6 +409,33 @@
   }
   .session .session-link:hover { color: var(--digi-pink-2); }
   .session .session-link::after { content: '→'; }
+
+  /* ===== Session card with deck art ===== */
+  /* When a session embeds the deck composite (which already contains title,
+     description and speaker headshots), we drop the redundant text and let
+     the image carry the visual weight. The colored side-accent is removed
+     for image cards since the deck image has its own top accent band. */
+  .session.has-image {
+    padding: 0;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .session.has-image::before { display: none; }
+  .session-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;       /* uniform card height across image sessions; close to the deck's native ratio so cropping is minimal */
+    object-fit: cover;
+    object-position: center;
+    background: var(--digi-gray-50);
+  }
+  .session.has-image .session-meta-row {
+    padding: 18px 22px 0;
+    margin-bottom: 12px;
+  }
+  .session.has-image .session-link {
+    padding: 0 22px 18px;
+  }
 
   /* ===== BC Pavilion timeline table ===== */
   .pavilion-table {
@@ -799,32 +827,25 @@
     </div>
 
     <div class="session-grid">
-      <article class="session">
+      <article class="session has-image">
+        <img class="session-image" src="assets/sessions/centre-stage-creative-tech-hub.jpg"
+             alt="Building a world-class creative tech hub: Lessons from Vancouver — Centre Stage, Tue May 12, 11:00–11:20 AM. Speakers: Michelle Grady (President, Sony Imageworks), Nick Cannon (SVP Production & Technology, Walt Disney Animation Studios), Jennifer McCarron (President, Blue Ant Studios), David Bloom (Senior Contributor, Forbes)." />
         <div class="session-meta-row">
           <span class="tag centre">Centre Stage</span>
           <span class="session-time">Tue May 12 · 11:00–11:20 AM</span>
         </div>
-        <h3>Building a world-class creative tech hub: Lessons from Vancouver</h3>
-        <p class="speakers">
-          <span class="name">Michelle Grady</span> (President, Sony Imageworks) ·
-          <span class="name">Nick Cannon</span> (SVP Production & Technology, Walt Disney Animation Studios) ·
-          <span class="name">Jennifer McCarron</span> (President, Blue Ant Studios)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/sessions/van26/cd9be43c-3bab-4a88-baa7-bb6788966978/building-a-world-class-creative-tech-hub-lessons-from-vancouver/"
            target="_blank" rel="noopener">View on Web Summit</a>
       </article>
 
-      <article class="session">
+      <article class="session has-image">
+        <img class="session-image" src="assets/sessions/centre-stage-game-engine.jpg"
+             alt="It's in the game (engine): Interactive sports' tech evolution — Centre Stage, Thu May 14, 10:00–10:20 AM. Speakers: Andrew Pojar (VP, Head of Technology, EA Sports), Nathan Downer (Anchor, CTV Toronto, moderator)." />
         <div class="session-meta-row">
           <span class="tag centre">Centre Stage</span>
           <span class="session-time">Thu May 14 · 10:00–10:20 AM</span>
         </div>
-        <h3>It's in the game (engine): Interactive sports' tech evolution</h3>
-        <p class="speakers">
-          <span class="name">Andrew Pojar</span> (VP, Head of Technology, EA Sports) ·
-          <span class="name">Nathan Downer</span> (Anchor, CTV Toronto — moderator)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/sessions/van26/f80d3132-aa4e-4ab0-855c-b0afe31943a0/it-s-in-the-game-engine-interactive-sports-tech-evolution/"
            target="_blank" rel="noopener">View on Web Summit</a>
@@ -849,17 +870,13 @@
     </div>
 
     <div class="session-grid">
-      <article class="session film">
+      <article class="session film has-image">
+        <img class="session-image" src="assets/sessions/film-ai-hollywood.jpg"
+             alt="AI goes to Hollywood — Film Summit, Wed May 13, 2:00–2:20 PM. Speakers: Cecilia Shen (Co-founder & CEO, Utopai Studios), Bruce Hamilton (CEO & General Partner, Everybody), Stewart Clarke (moderator)." />
         <div class="session-meta-row">
           <span class="tag film">Film Summit</span>
           <span class="session-time">Wed May 13 · 2:00–2:20 PM</span>
         </div>
-        <h3>AI goes to Hollywood</h3>
-        <p class="speakers">
-          <span class="name">Cecilia Shen</span> (Co-founder & CEO, Utopai Studios) ·
-          <span class="name">Bruce Hamilton</span> (CEO & General Partner, Everybody) ·
-          <span class="name">Stewart Clarke</span> (moderator)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/sessions/van26/8bfffa6e-c349-4fd3-b16b-ec70090d3c0d/ai-goes-to-hollywood/"
            target="_blank" rel="noopener">View on Web Summit</a>
@@ -879,48 +896,37 @@
            target="_blank" rel="noopener">View on Web Summit</a>
       </article>
 
-      <article class="session film">
+      <article class="session film has-image">
+        <img class="session-image" src="assets/sessions/film-webcomics.jpg"
+             alt="How webcomics are powering the next global franchises — Film Summit, Wed May 13, 3:00–3:20 PM. Speakers: Sam Register (President, Warner Bros. Animation), Yongsoo Kim (President, WEBTOON Entertainment)." />
         <div class="session-meta-row">
           <span class="tag film">Film Summit</span>
           <span class="session-time">Wed May 13 · 3:00–3:20 PM</span>
         </div>
-        <h3>How webcomics are powering the next global franchises</h3>
-        <p class="speakers">
-          <span class="name">Sam Register</span> (President, Warner Bros. Animation) ·
-          <span class="name">Yongsoo Kim</span> (President, WEBTOON Entertainment)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/sessions/van26/fbf7fa92-9098-4012-a0ec-4da3fd638053/how-webcomics-are-powering-the-next-global-franchises/"
            target="_blank" rel="noopener">View on Web Summit</a>
       </article>
 
-      <article class="session film">
+      <article class="session film has-image">
+        <img class="session-image" src="assets/sessions/film-ilm.jpg"
+             alt="ILM: How visual effects builds new worlds — Film Summit, Wed May 13, 3:20–3:40 PM. Speakers: Marko Chulev (Visual Effects Supervisor, Industrial Light & Magic), Rachel Reed (Visual Effects Producer, ILM), Stewart Clarke (moderator)." />
         <div class="session-meta-row">
           <span class="tag film">Film Summit</span>
           <span class="session-time">Wed May 13 · 3:20–3:40 PM</span>
         </div>
-        <h3>ILM: How visual effects builds new worlds</h3>
-        <p class="speakers">
-          <span class="name">Marko Chulev</span> (Visual Effects Supervisor, Industrial Light & Magic) ·
-          <span class="name">Rachel Reed</span> (Visual Effects Producer, ILM) ·
-          <span class="name">Stewart Clarke</span> (moderator)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/sessions/van26/b28afbce-8097-466b-be50-c37c902e7b1f/ilm-how-visual-effects-builds-new-worlds/"
            target="_blank" rel="noopener">View on Web Summit</a>
       </article>
 
-      <article class="session film">
+      <article class="session film has-image">
+        <img class="session-image" src="assets/sessions/film-kpop-demon-hunters.jpg"
+             alt="KPop Demon Hunters: Crafting a global animated phenomenon — Film Summit, Wed May 13, 3:40–4:00 PM. Speakers: Jacky Priddle (Senior Producer, Sony Imageworks), Andrea Matamoros (Modeling Supervisor, Sony Imageworks), Josh O'Kane (Reporter, The Globe and Mail, moderator)." />
         <div class="session-meta-row">
           <span class="tag film">Film Summit</span>
           <span class="session-time">Wed May 13 · 3:40–4:00 PM</span>
         </div>
-        <h3>KPop Demon Hunters: Crafting a global animated phenomenon</h3>
-        <p class="speakers">
-          <span class="name">Jacky Priddle</span> (Senior Producer, Sony Imageworks) ·
-          <span class="name">Andrea Matamoros</span> (Modeling Supervisor, Sony Imageworks) ·
-          <span class="name">Josh O'Kane</span> (Reporter, The Globe and Mail — moderator)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/sessions/van26/b7427562-a395-4e28-ae76-a73570cf1bf6/kpop-demon-hunters-crafting-a-global-animated-phenomenon/"
            target="_blank" rel="noopener">View on Web Summit</a>
@@ -945,45 +951,37 @@
     </div>
 
     <div class="session-grid">
-      <article class="session gaming">
+      <article class="session gaming has-image">
+        <img class="session-image" src="assets/sessions/gaming-chess.jpg"
+             alt="How chess saved my life — Gaming Summit, Thu May 14, 2:05–2:25 PM. Speaker: Danny Rensch (Co-founder & Chief Chess Officer, Chess.com)." />
         <div class="session-meta-row">
           <span class="tag gaming">Gaming Summit</span>
           <span class="session-time">Thu May 14 · 2:05–2:25 PM</span>
         </div>
-        <h3>How chess saved my life</h3>
-        <p class="speakers">
-          <span class="name">Danny Rensch</span> (Co-founder & Chief Chess Officer, Chess.com)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/sessions/van26/76a5be3c-728b-4b09-9007-f0c45848d0f2/how-chess-saved-my-life/"
            target="_blank" rel="noopener">View on Web Summit</a>
       </article>
 
-      <article class="session gaming">
+      <article class="session gaming has-image">
+        <img class="session-image" src="assets/sessions/gaming-future-of-gaming.jpg"
+             alt="Who builds the future of gaming? — Gaming Summit, Thu May 14, 2:25–2:45 PM. Speakers: Rory McGuire (Chief Creative Officer, Blackbird Interactive), Kimberly Voll (CEO, Brace Yourself Games), David Ewalt (Editor-in-Chief, Scientific American, moderator)." />
         <div class="session-meta-row">
           <span class="tag gaming">Gaming Summit</span>
           <span class="session-time">Thu May 14 · 2:25–2:45 PM</span>
         </div>
-        <h3>Who builds the future of gaming?</h3>
-        <p class="speakers">
-          <span class="name">Rory McGuire</span> (Chief Creative Officer, Blackbird Interactive) ·
-          <span class="name">Kimberly Voll</span> (CEO, Brace Yourself Games) ·
-          <span class="name">David Ewalt</span> (Editor-in-Chief, Scientific American — moderator)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/sessions/van26/67e76abd-917e-4fc6-a802-78c53d058896/who-builds-the-future-of-gaming/"
            target="_blank" rel="noopener">View on Web Summit</a>
       </article>
 
-      <article class="session gaming">
+      <article class="session gaming has-image">
+        <img class="session-image" src="assets/sessions/gaming-players-platform.jpg"
+             alt="When players become the platform — Gaming Summit, Thu May 14, 2:45–3:05 PM. Speaker: Jerret West (CMO, Roblox)." />
         <div class="session-meta-row">
           <span class="tag gaming">Gaming Summit</span>
           <span class="session-time">Thu May 14 · 2:45–3:05 PM</span>
         </div>
-        <h3>When players become the platform</h3>
-        <p class="speakers">
-          <span class="name">Jerret West</span> (CMO, Roblox)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/sessions/van26/f97949fa-e268-4e73-aff2-7c4649fc81ff/when-players-become-the-platform/"
            target="_blank" rel="noopener">View on Web Summit</a>
@@ -1018,18 +1016,13 @@
            target="_blank" rel="noopener">View on Web Summit</a>
       </article>
 
-      <article class="session gaming">
+      <article class="session gaming has-image">
+        <img class="session-image" src="assets/sessions/gaming-game-over.jpg"
+             alt="Game Over, Continue? Lessons from the ups and downs of building game studios — Gaming Summit, Thu May 14, 4:05–4:30 PM. Speakers: Ray Muzyka (Co-founder, BioWare), Jeanne-Marie Owens (Co-founder Critical Path; COO, Phoenix Labs), Jesse Houston (Co-founder Critical Path, Phoenix Labs), Victor Lucas (Founder, Electric Playground Network)." />
         <div class="session-meta-row">
           <span class="tag gaming">Gaming Summit</span>
           <span class="session-time">Thu May 14 · 4:05–4:30 PM</span>
         </div>
-        <h3>Game Over, Continue? — Lessons from the ups and downs of building game studios</h3>
-        <p class="speakers">
-          <span class="name">Ray Muzyka</span> (Co-founder, BioWare) ·
-          <span class="name">Jeanne-Marie Owens</span> (Co-founder Critical Path; COO, Phoenix Labs) ·
-          <span class="name">Jesse Houston</span> (Co-founder Critical Path, Phoenix Labs) ·
-          <span class="name">Victor Lucas</span> (Founder, Electric Playground Network)
-        </p>
         <a class="session-link"
            href="https://vancouver.websummit.com/"
            target="_blank" rel="noopener">View on Web Summit</a>
@@ -1096,7 +1089,7 @@
           <td class="who">
             Mod: Jeanne-Marie Owens (DigiBC, Critical Path Games) ·
             Jesse Houston (Griffin Ventures) ·
-            Arneh Khatchatourians (Kabam) ·
+            Arneh Khatchatourians (Kabam/Netmarble) ·
             Matt Bilbey (London Venture Partners)
           </td>
         </tr>
